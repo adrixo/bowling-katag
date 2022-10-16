@@ -6,6 +6,10 @@ func parse(gameResult string) (result int) {
 	return
 }
 
-func parseChar(input string) (int, error) {
-	return strconv.Atoi(input)
+func parseChar(input string) (result int, e error) {
+	for _, s := range input {
+		number, _ := strconv.Atoi(string(s))
+		result += number
+	}
+	return result, e
 }
