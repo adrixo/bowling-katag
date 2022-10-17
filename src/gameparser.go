@@ -5,6 +5,15 @@ import (
 	"strings"
 )
 
+func parseGame(gameResult string) (result int) {
+	gameParts := strings.Split(gameResult, "||")
+	result = parse(gameParts[0])
+	extraResult := parse(gameParts[1])
+
+	return result + extraResult
+
+}
+
 func parse(gameResult string) (result int) {
 	frames := strings.Split(gameResult, "|")
 	doubler := 0

@@ -64,3 +64,21 @@ func Test_strike_and_spare_should_work_together(t *testing.T) {
 		t.Errorf("Expected %v; but got %v", expected, result)
 	}
 }
+
+func Test_game_with_no_extra_points(t *testing.T) {
+	number := "X|2/|3-|3/|X|X|-2||"
+	expected := 90
+	result := parseGame(number)
+	if expected != result {
+		t.Errorf("Expected %v; but got %v", expected, result)
+	}
+}
+
+func Test_game_with_extra_points(t *testing.T) {
+	number := "X|2/|3-|3/|X|X|-2||32"
+	expected := 95
+	result := parseGame(number)
+	if expected != result {
+		t.Errorf("Expected %v; but got %v", expected, result)
+	}
+}
