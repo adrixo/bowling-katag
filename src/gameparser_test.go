@@ -37,3 +37,12 @@ func Test_should_give_10_points_on_spare(t *testing.T) {
 		t.Errorf("Expected %v; but got %v", expected, result)
 	}
 }
+
+func Test_should_give_10_points_on_spare_and_double_next_throw(t *testing.T) {
+	number := "4/|2-|7/|X"
+	expected := 44
+	result := parse(number)
+	if expected != result {
+		t.Errorf("Expected %v; but got %v", expected, result)
+	}
+}

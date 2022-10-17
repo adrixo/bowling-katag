@@ -7,22 +7,35 @@ import (
 
 func parse(gameResult string) (result int) {
 	frames := strings.Split(gameResult, "|")
+	doubler := 0
 	for _, frame := range frames {
 		frameResult := 0
 		for _, symbol := range frame {
-			if string(symbol) == "-" {
-				continue
-			}
-			if string(symbol) == "X" {
+			switch string(symbol) {
+			case "-":
+				doubler--
+			case "X":
 				frameResult = 10
-				continue
-			}
-			if string(symbol) == "/" {
+				if doubler >= 1 {
+					frameResult = 20
+				}
+				doubler = 2
+				break
+			case "/":
 				frameResult = 10
-				continue
+				if doubler >= 1 {
+					frameResult = 20
+				}
+				doubler = 1
+				break
+			default:
+				value, _ := strconv.Atoi(string(symbol))
+				frameResult += value
+				if doubler >= 1 {
+					doubler--
+					frameResult += value
+				}
 			}
-			value, _ := strconv.Atoi(string(symbol))
-			frameResult += value
 		}
 		result += frameResult
 	}
