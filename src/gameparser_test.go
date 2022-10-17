@@ -55,3 +55,12 @@ func Test_should_give_10_points_on_strike_and_double_next_two_throw(t *testing.T
 		t.Errorf("Expected %v; but got %v", expected, result)
 	}
 }
+
+func Test_strike_and_spare_should_work_together(t *testing.T) {
+	number := "X|2/|3-|3/|X|X|-2"
+	expected := 90
+	result := parse(number)
+	if expected != result {
+		t.Errorf("Expected %v; but got %v", expected, result)
+	}
+}
