@@ -8,23 +8,16 @@ import (
 func parse(gameResult string) (result int) {
 	frames := strings.Split(gameResult, "|")
 	for _, frame := range frames {
-		firstSymbol := string(frame[0])
-		var firstThrow int
-		if firstSymbol == "-" {
-			firstThrow = 0
-		} else {
-			firstThrow, _ = strconv.Atoi(firstSymbol)
-		}
-		result += firstThrow
-
-		secondSymbol := string(frame[1])
-		var secondThrow int
-		if secondSymbol == "-" {
-			secondThrow = 0
-		} else {
-			secondThrow, _ = strconv.Atoi(secondSymbol)
-		}
-		result += secondThrow
+		result += parseSymbol(string(frame[0]))
+		result += parseSymbol(string(frame[1]))
 	}
+	return result
+}
+
+func parseSymbol(symbol string) (result int) {
+	if symbol == "-" {
+		return 0
+	}
+	result, _ = strconv.Atoi(symbol)
 	return result
 }

@@ -19,3 +19,12 @@ func Test_should_ignore_miss_symbol(t *testing.T) {
 		t.Errorf("Expected %v; but got %v", expected, result)
 	}
 }
+
+func Test_should_give_10_points_on_strike(t *testing.T) {
+	number := "X|--|X|--"
+	expected := 10
+	result := parse(number)
+	if expected != result {
+		t.Errorf("Expected %v; but got %v", expected, result)
+	}
+}
