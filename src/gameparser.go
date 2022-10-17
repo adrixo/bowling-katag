@@ -18,6 +18,9 @@ func parseSymbol(symbol string) (result int) {
 	if symbol == "-" {
 		return 0
 	}
+	if symbol == "X" {
+		return 10
+	}
 	result, _ = strconv.Atoi(symbol)
 	return result
 }
