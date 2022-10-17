@@ -8,10 +8,10 @@ import (
 func parse(gameResult string) (result int) {
 	frames := strings.Split(gameResult, "|")
 	for _, frame := range frames {
-		for _, symbol := range frame {
-			number, _ := strconv.Atoi(string(symbol))
-			result += number
-		}
+		firstThrow, _ := strconv.Atoi(string(frame[0]))
+		secondThrow, _ := strconv.Atoi(string(frame[1]))
+		result += firstThrow
+		result += secondThrow
 	}
 	return result
 }
